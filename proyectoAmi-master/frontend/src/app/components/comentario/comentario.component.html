@@ -1,0 +1,91 @@
+
+<!-- MATERIALIZE CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> 
+<!-- MATERIAL ICONS CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<link rel="stylesheet" type="text/css" href="../../../assets/fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+================================================== -->
+<link rel="stylesheet" type="text/css"  href="../../../assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
+
+<!-- Google Fonts
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+
+<div class="container">
+  <br>
+  <br>
+ 
+  <h3>TABLA COMENTARIOS</h3>
+  <br>
+  <div class="row">
+      
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          
+          <form #comentarioForm="ngForm" (ngSubmit)="addComentario(comentarioForm)">
+            <input type="hidden" name="_id" #_id="ngModel" 
+            [(ngModel)]="comentarioService.selectedComentario._id">
+            <div class="row">
+              <div class="input-field col-s12">
+                <input type="text" name="idpublicacionley" #name="ngModel" 
+                [(ngModel)]="comentarioService.selectedComentario.idpublicacionley" placeholder="idpublicacionley">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="like" #name="ngModel" 
+                [(ngModel)]="comentarioService.selectedComentario.like" placeholder="like ">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="dislike" #name="ngModel" 
+                [(ngModel)]="comentarioService.selectedComentario.dislike" placeholder="dislike">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="comentarios" #name="ngModel" 
+                [(ngModel)]="comentarioService.selectedComentario.comentarios" placeholder="comentarios">
+              </div>
+              <div class="card-action">
+                <div class="input-field col-s12">
+                  <button class="btn right  purple darken-4" (click)="resetForm(comentarioForm)">Limpiar</button>
+                  <button class="btn ">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+          <th>idpublicacionley</th>
+          <th>like</th>
+          <th>dislike</th>
+         <th>comentarios</th>
+
+        </thead>
+        <tbody>
+          <tr *ngFor="let comentario of comentarioService.comentarios">
+            <td>{{ comentario.idpublicacionley }}</td>
+            <td>{{ comentario.like }}</td>
+            <td>{{ comentario.dislike }}</td>
+            <td>{{ comentario.comentarios }}</td>
+
+            <td>
+              <a (click)="editComentario(comentario)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteComentario(comentario._id, comentarioForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

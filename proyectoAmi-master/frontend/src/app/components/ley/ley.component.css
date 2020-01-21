@@ -1,0 +1,26 @@
+.fondoADMIN{
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-image: url('../../../assets/img/app/fondoCRUD.jpg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  /*   background: #0250c5;
+    background: -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
+    background: -o-linear-gradient(bottom, #0250c5, #d43f8d);
+    background: -moz-linear-gradient(bottom, #0250c5, #d43f8d);
+    background: linear-gradient(bottom, #0250c5, #d43f8d); */
+    position: relative;
+    z-index: 1;
+}

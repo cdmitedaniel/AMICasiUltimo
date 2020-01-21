@@ -1,0 +1,102 @@
+
+<!-- MATERIALIZE CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> 
+<!-- MATERIAL ICONS CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<link rel="stylesheet" type="text/css" href="../../../assets/fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+================================================== -->
+<link rel="stylesheet" type="text/css"  href="../../../assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
+
+<!-- Google Fonts
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+
+<div class="container">
+        <br>
+        <br>
+       
+        <h3>TABLA HISTORIAL DE VERSIONES DE ARTICULOS</h3>
+        <br>
+        <div class="row">
+          <div class="col s5">
+            <div class="card">
+              <div class="card-content">
+                <form #historialForm="ngForm" (ngSubmit)="addHistorial(historialForm)"> 
+                  <input type="hidden" name="_id" #_id="ngModel" 
+                  [(ngModel)]="historialService.selectedHistorial._id">
+                  <div class="row">
+                      <div class="input-field col-s12">
+                          <input type="text" name="iduser" #name="ngModel" 
+                          [(ngModel)]="historialService.selectedHistorial.iduser" placeholder="iduser">
+                        </div>
+                        <div class="input-field col-s12">
+                            <input type="text" name="idley" #name="ngModel" 
+                            [(ngModel)]="historialService.selectedHistorial.idley" placeholder="idley">
+                          </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="fecha_publicacion" #name="ngModel" 
+                      [(ngModel)]="historialService.selectedHistorial.fecha_publicacion" placeholder="Fecha de Publicacion">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="detalle" #name="ngModel" 
+                      [(ngModel)]="historialService.selectedHistorial.detalle" placeholder="Detalle">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="estado" #name="ngModel" 
+                      [(ngModel)]="historialService.selectedHistorial.estado" placeholder="Estado">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="expl_estado" #name="ngModel" 
+                      [(ngModel)]="historialService.selectedHistorial.expl_estado" placeholder="Explicacion del estado">
+                    </div>
+            
+                    <div class="card-action">
+                      <div class="input-field col-s12">
+                        <button class="btn right  purple darken-4" (click)="resetForm(historialForm)">Limpiar</button>
+                        <button class="btn ">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col s7">
+            <table class="striped highlight black-text">
+              <thead>
+                <th>iduser</th>
+                <th>idley</th>
+                <th>fecha_publicacion</th>
+                <th>detalle</th>
+                <th>estado</th>
+                <th>expl_estado</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let historial of historialService.historiales">
+                  <td>{{ historial.iduser }}</td>
+                  <td>{{ historial.idley }}</td>
+                  <td>{{ historial.fecha_publicacion }}</td>
+                  <td>{{ historial.detalle }}</td>
+                  <td>{{ historial.estado }}</td>
+                  <td>{{ historial.expl_estado }}</td>
+                
+                  <td>
+                    <!-- <a (click)="editPersona(persona)"> -->
+                      <a (click)="editHistorial(historial)">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <a (click)="deleteHistorial(historial._id, historialForm)">
+                      <i class="material-icons">delete</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,93 @@
+
+<!-- MATERIALIZE CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> 
+<!-- MATERIAL ICONS CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<link rel="stylesheet" type="text/css" href="../../../assets/fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+================================================== -->
+<link rel="stylesheet" type="text/css"  href="../../../assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
+
+<!-- Google Fonts
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+
+<div class="container">
+  <br>
+  <br>
+ 
+  <h3>TABLA USUARIOS</h3>
+  <br>
+  <div class="row">
+      
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          
+          <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+            <input type="hidden" name="_id" #_id="ngModel" 
+            [(ngModel)]="userService.selectedUser._id">
+            <div class="row">
+              <div class="input-field col-s12">
+                <input type="text" name="idpersona" #name="ngModel" 
+                [(ngModel)]="userService.selectedUser.idpersona" placeholder="idpersona">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="rol" #name="ngModel" 
+                [(ngModel)]="userService.selectedUser.rol" placeholder="Cargo que ocupa">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="user" #name="ngModel" 
+                [(ngModel)]="userService.selectedUser.user" placeholder="Nombre de usuario">
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="password" #name="ngModel" 
+                [(ngModel)]="userService.selectedUser.password" value="0" placeholder="Escriba la contrasenia">
+              </div>
+              <div class="card-action">
+                <div class="input-field col-s12">
+                  <button class="btn right  purple darken-4" (click)="resetForm(userForm)">Limpiar</button>
+                  <button class="btn ">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+          <th>idpersona</th>
+          <th>Rol</th>
+          <th>user</th>
+          <th>password</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userService.users">
+            <td>{{ user.idpersona }}</td>
+            <td>{{ user.rol }}</td>
+            <td>{{ user.user }}</td>
+            <td>{{ user.password }}</td>
+            <td>
+              <a (click)="editUser(user)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteUser(user._id, userForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MATERIALIZE JAVASCRIPT CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+ 

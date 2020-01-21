@@ -1,0 +1,109 @@
+
+<!-- MATERIALIZE CSS CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> 
+<!-- MATERIAL ICONS CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+
+<link rel="stylesheet" type="text/css" href="../../../assets/fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+================================================== -->
+<link rel="stylesheet" type="text/css"  href="../../../assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
+
+<!-- Google Fonts
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+
+<div class="container">
+        <br>
+        <br>
+       
+        <h3>TABLA LEY</h3>
+        <br>
+        <div class="row">
+          <div class="col s5">
+            <div class="card">
+              <div class="card-content">
+                <form #leyForm="ngForm" (ngSubmit)="addLey(leyForm)"> 
+                  <input type="hidden" name="_id" #_id="ngModel" 
+                  [(ngModel)]="leyService.selectedLey._id">
+                  <div class="row">
+                    
+                    <div class="input-field col-s12">
+                      <input type="text" name="estado" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.estado" placeholder="Estado">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="periodo" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.periodo" placeholder="Periodo">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="nombre" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.nombre" placeholder="Nombre">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="cod_decreto" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.cod_decreto" placeholder="Ingrese codigo de decreto">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="fecha_publicacion" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.fecha_publicacion" placeholder="Ingrese fecha de publicacion">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="descripcion" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.descripcion"  placeholder="Descripcion">
+                    </div>
+                    <div class="input-field col-s12">
+                      <input type="text" name="proponente" #name="ngModel" 
+                      [(ngModel)]="leyService.selectedLey.proponente"  placeholder="Nombre del Proponente">
+                    </div>
+                    <div class="card-action">
+                      <div class="input-field col-s12">
+                        <button class="btn right  purple darken-4" (click)="resetForm(leyForm)">Limpiar</button>
+                        <button class="btn ">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col s7">
+            <table class="striped highlight black-text">
+              <thead>
+                <th>estado</th>
+                <th>periodo</th>
+                <th>nombre</th>
+                <th>codigo decreto</th>
+                <th>fecha publicacion</th>
+                <th>descripcion</th>
+                <th>proponente </th>
+          
+              </thead>
+              <tbody>
+                <tr *ngFor="let ley of leyService.leyes">
+                  <td>{{ ley.estado }}</td>
+                  <td>{{ ley.periodo }}</td>                  
+                  <td>{{ ley.nombre }}</td>
+                  <td>{{ ley.cod_decreto }}</td>
+                  <td>{{ ley.fecha_publicacion }}</td>
+                  <td>{{ ley.descripcion }}</td>
+                  <td>{{ ley.proponente }}</td>
+                 
+                  <td>
+                    <!-- <a (click)="editPersona(persona)"> -->
+                      <a (click)="editLey(ley)">
+                      <i class="material-icons">edit</i>
+                    </a>
+                    <a (click)="deleteLey(ley._id, leyForm)">
+                      <i class="material-icons">delete</i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>

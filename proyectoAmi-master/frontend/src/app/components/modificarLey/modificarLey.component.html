@@ -1,0 +1,262 @@
+ <!-- Basic Page Needs
+    ================================================== -->
+   
+    
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../../../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../../assets/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../../assets/img/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="../../../assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Nivo Lightbox
+    ================================================== -->
+    <link rel="stylesheet" href="../../../assets/css/nivo-lightbox.css" >
+    <link rel="stylesheet" href="../../../assets/css/nivo_lightbox_themes/default/default.css">
+
+    <!-- Slider
+    ================================================== -->
+    <link href="../../../assets/css/owl.carousel.css" rel="stylesheet" media="screen">
+    <link href="../../../assets/css/owl.theme.css" rel="stylesheet" media="screen">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="../../../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
+
+     <!-- MATERIAL ICONS CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <!-- Google Fonts
+    ================================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="../../../assets/js/modernizr.custom.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  
+    
+<!-- Page Header
+    ================================================== -->
+    <div id="tf-header">
+      <div class="container"> <!-- container -->
+          <h1>Modificar Ley / Proyecto de Leyes</h1>
+      </div><!-- end container -->
+  </div>
+<br><br><br>
+<!-- Formulario Header
+    ================================================== -->
+  <form  #leyForm="ngForm" (ngSubmit)="addLey(leyForm)">
+    <input type="hidden" class="form-control" name="_id" #_id="ngModel" [(ngModel)]="leyService.selectedLey._id">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Ingrese el Nuevo Nombre Ley/Proyecto </label>
+        <input type="text" name="nombre" #name="ngModel" class="form-control" id="inputCity" placeholder="Renombrar Ley/Proyecto"  
+        [(ngModel)]="leyService.selectedLey.nombre">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputZip">Nuevo Codigo de Decreto</label>
+        <input type="text" name="cod_decreto" #name="ngModel" class="form-control" id="inputZip" placeholder="Renombrar Codigo Ley/Proyecto"
+        [(ngModel)]="leyService.selectedLey.cod_decreto">
+      </div>
+      <div class="form-group col-md-3">
+        <label >Fecha de Publicacion Ley Proyecto</label>
+        <div class="col-10">
+          <input class="form-control" type="text" name="fecha_publicacion" #name="ngModel" 
+          [(ngModel)]="leyService.selectedLey.fecha_publicacion" value="2011-08-19" id="example-date-input">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputAddress">Descripcion</label>
+      <input type="text" name="descripcion" #name="ngModel"  class="form-control" id="inputAddress" 
+      [(ngModel)]="leyService.selectedLey.descripcion" placeholder="Descripcion del Proyecto">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Nombre de la Persona que Propone Ley/Proyecto </label>
+        <input type="text" name="proponente" #name="ngModel" class="form-control"
+        [(ngModel)]="leyService.selectedLey.proponente"  placeholder="Renombrar Persona">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Estado del Tramite</label>
+        <input type="text" name="estado" #name="ngModel"class="form-control"
+        [(ngModel)]="leyService.selectedLey.estado">
+          
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">Periodo Legislativo</label>
+        <select id="inputState" class="form-control">
+          <option selected>Seleccionar...</option>
+          <option>2017-2021</option>
+        </select>
+      </div>
+    
+    </div>
+  
+  
+    
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+           <th>Cod. de Decreto</th>
+          <th>F. Publicacion</th>
+          <th>Nombre Ley/Proyecto</th>
+          <th>Descripcion</th>
+          <th>Autor Ley/Proyecto</th>
+          <th>Estado del Tramite</th>
+          <th>Editar   /  Eliminar</th>
+        
+        </thead>
+        <tbody>
+          <tr *ngFor="let ley of leyService.leyes">
+            <td>{{ ley.cod_decreto }}</td>
+            <td>{{ ley.fecha_publicacion }}</td>
+            <td>{{ ley.nombre }}</td>
+            <td>{{ ley.descripcion }}</td>
+            <td>{{ ley.proponente }}</td>
+            <td>{{ ley.estado }}</td>
+    
+
+                 <td>
+              <!-- <a (click)="editPersona(persona)"> -->
+                <a (click)="editLey(ley)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteLey(ley._id, leyForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+            
+          </tr>        
+      
+        </tbody>
+        
+      </table>
+      <br>
+      <div class="form-group col-md-6">
+        <button (click)="postLey(ley)"type="submit" class="btn btn-primary btn-warning" style="margin: 5px">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-danger" style="margin: 5px" >Cancelar</button>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div id="tf-header">
+      <div class="container"> <!-- container -->
+          <h1>Modificar Articulo de Ley / Proyecto </h1>
+      </div><!-- end container -->
+  </div>
+   <form #articuloForm="ngForm" (ngSubmit)="addArticulo(articuloForm)"> 
+    <input type="hidden" name="_id" #_id="ngModel"  [(ngModel)]="articuloService.selectedArticulo._id">
+     
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Nombre del Articulo </label>
+        <input type="text" name="name" #name="ngModel" class="form-control" id="inputCity" placeholder="Renombrar Articulo de Ley/Proyecto"  
+        [(ngModel)]="articuloService.selectedArticulo.name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Detalle del Articulo</label>
+        <input type="text" name="detalle" #name="ngModel" class="form-control" id="inputZip" placeholder="Renombrar Codigo Ley/Proyecto"
+        [(ngModel)]="articuloService.selectedArticulo.detalle">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress2">Resumen del Articulo</label>
+        <input type="text" name="resumen" #name="ngModel" class="form-control"
+        [(ngModel)]="articuloService.selectedArticulo.resumen" placeholder="Resumen"   >    
+      </div>
+      </div>
+    
+    
+    <div class="form-group col-md-6">
+      <label for="inputAddress2">Explicacion del Articulo</label>
+      <input type="text" name="exp_articulo" #name="ngModel" class="form-control"
+      [(ngModel)]="articuloService.selectedArticulo.exp_articulo" placeholder="Explicacion">    
+    </div>
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+          <th>Nombre del Articulo</th>
+          <th>Detalle Articulo</th>
+          <th>Explicacion del Articulo</th>
+          <th>descripcion_del_articulo</th>
+          <th>Editar   /  Eliminar</th>
+        
+
+        
+        </thead>
+        <tbody>
+          <tr *ngFor="let articulo of articuloService.articulos">
+            <td>{{ articulo.name }}</td>
+            <td>{{ articulo.detalle }}</td>
+            <td>{{ articulo.resumen }}</td>
+            <td>{{ articulo.exp_articulo }}</td>
+
+            <td>
+              <a (click)="editArticulo(articulo)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteArticulo(articulo._id, articuloForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="form-group col-md-6">
+      <button (click)="postLey(ley)"type="submit" class="btn btn-primary btn-warning" style="margin: 5px">Enviar</button>
+      <button type="submit" class="btn btn-primary btn-danger" style="margin: 5px" >Cancelar</button>
+      </div>
+      <br>
+  </form>
+
+ 
+  </form>>
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../../assets/js/jquery.1.11.1.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script type="text/javascript" src="../../../assets/js/bootstrap.js"></script>
+
+  <script type="text/javascript" src="../../../assets/js/owl.carousel.js"></script><!-- Owl Carousel Plugin -->
+
+  <script type="text/javascript" src="../../../assets/js/SmoothScroll.js"></script>
+
+  <!-- Google Map -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&amp;sensor=false"></script>
+  <script type="text/javascript" src="../../../assets/js/map.js"></script>
+
+  <!-- MATERIALIZE JAVASCRIPT CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script><!-- Parallax Effects -->
+  <script type="text/javascript" src="../../../assets/js/skrollr.js"></script>
+  <script type="text/javascript" src="../../../assets/js/imagesloaded.js"></script>
+
+  <!-- Portfolio Filter -->
+  <script type="text/javascript" src="../../../assets/js/jquery.isotope.js"></script>
+
+  <!-- LightBox Nivo -->
+  <script type="text/javascript" src="../../../assets/js/nivo-lightbox.min.js"></script>
+
+  <!-- Contact page-->
+  <script type="text/javascript" src="../../../assets/js/jqBootstrapValidation.js"></script>
+  <script type="text/javascript" src="../../../assets/js/contact.js"></script>
+
+  <!-- Javascripts
+  ================================================== -->
+  <script type="text/javascript" src="../../../assets/js/main.js"></script>
