@@ -11,6 +11,7 @@ import { User } from "../../models/user";
 import { Router } from '@angular/router';
 
 
+
 declare var M: any;
 @Component({
   selector: 'app-votar',
@@ -21,11 +22,20 @@ declare var M: any;
 
 export class VotarComponent implements OnInit {
 
-  constructor(private leyService: LeyService, private articuloService: ArticuloService ) { }
+  constructor(private leyService: LeyService, private articuloService: ArticuloService, private router: Router ) { }
+
+  public articuloSeleccionada:Articulo;
+
+  public userLogueado:User;
 
   ngOnInit() {
-    this.getLeyes();
-    this.getArticulos();
+    this.userLogueado=JSON.parse(localStorage.getItem("currentUser"));
+    if(this.userLogueado!=undefined){
+      this.getLeyes();
+      this.getArticulos();
+    }else{
+      this.router.navigate(['/admin/login']);
+    }
   }
 
   addLey(form?: NgForm) {
@@ -57,8 +67,9 @@ export class VotarComponent implements OnInit {
       });
   }
   
-  editLey(ley: Ley) {
+  editLey(ley: Ley, articulo: Articulo) {
     this.leyService.selectedLey = ley;
+    this.articuloService.selectedArticulo=articulo;
   }
 
   deleteLey(_id: string, form: NgForm) {
@@ -79,6 +90,12 @@ export class VotarComponent implements OnInit {
     }
   }
 
+  getLeyArticulo(){
+    this.leyService.getLeyArticulo(this.articuloSeleccionada)
+      .subscribe((res: Ley[]) => {
+        this.leyService.leyes = res as Ley[];
+      });
+  }
 
   /////////Articulos/////////////////
 

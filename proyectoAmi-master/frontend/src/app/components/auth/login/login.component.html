@@ -28,13 +28,17 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form">
-          
+				<form class="login100-form validate-form" #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)">
+		   
+					<div role="alert" *ngIf="loginError.length > 0">
+						<div>{{loginError}}</div>
+					</div>
+
           <img src="../../../../assets/img/bg-01.jpg" alt="" width="100%" height="100%">
 
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid usuario is required: ex@abc.xyz">
-						<input class="input100" type="text" name="user" placeholder="Usuario">
+						<input class="input100" type="text" #email="ngModel" name="user" placeholder="Usuario" [(ngModel)]="user.user" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
@@ -42,7 +46,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" #password="ngModel" name="pass" placeholder="Password" [(ngModel)]="user.password" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>

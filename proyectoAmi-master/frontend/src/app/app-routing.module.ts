@@ -30,7 +30,8 @@ import {VotarComponent} from 'src/app/components/votar/votar.component';
 import { LeyesComponent } from 'src/app/components/leyes/leyes.component';
 import { HistorialAsambleistaComponent } from 'src/app/components/historial-asambleista/historial-asambleista.component';
 
-
+import { LeerLeyComponent } from './components/leer-ley/leer-ley.component';
+import { LeyItemComponent } from './components/ley-item/ley-item.component';
 
 const routes: Routes = [
   {path: 'admin/employees', component: EmployeeComponent},
@@ -57,9 +58,10 @@ const routes: Routes = [
   {path:'admin/acercaDe', component:AcercaDeComponent},
   {path:'admin/votar', component:VotarComponent},
   {path:'admin/leyes', component:LeyesComponent},
-  {path:'admin/HistorialAsambleistaComponent', component:HistorialAsambleistaComponent}
+  {path:'admin/HistorialAsambleistaComponent', component:HistorialAsambleistaComponent},
 
-
+  {path:'admin/leerLey', component:LeerLeyComponent},
+  {path:'admin/LeyItem', component:LeyItemComponent}
 ];
 
 @NgModule({

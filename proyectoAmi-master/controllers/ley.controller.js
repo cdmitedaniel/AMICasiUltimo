@@ -73,4 +73,5 @@ leyCtrl.getLeyPeriodo = async (req, res, next) => {
 }
 
 
+
 module.exports = leyCtrl;

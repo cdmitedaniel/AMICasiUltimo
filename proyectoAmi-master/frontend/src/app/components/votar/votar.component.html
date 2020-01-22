@@ -72,7 +72,7 @@
       <div class="form-group col-md-3">
         <label >Seleccione la opcion</label>
         <div>
-        <button type="submit" class="btn btn-primary tf-btn color" style="margin: 5px; padding: 5px;" (click)="getLeyley">Buscar</button>
+        <button type="submit" class="btn btn-primary tf-btn color" style="margin: 5px; padding: 5px;" (click)="getLeyArticulo">Buscar</button>
         <button type="submit" class="btn btn-primary tf-btnes colores" style="margin: 5px; padding: 5px;" (click)="resetForm(leyForm)">Limpiar</button>
         </div>
       </div>
@@ -109,10 +109,17 @@
         <input type="text" class="form-control" name="proponente" #name="ngModel" 
         [(ngModel)]="leyService.selectedLey.proponente"  placeholder="Nombre del Proponente">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-3">
         <label >Descripccion</label>
         <input type="text" class="form-control" name="descripcion" #name="ngModel" 
         [(ngModel)]="leyService.selectedLey.descripcion"  placeholder="Descripcion">
+      </div>
+
+    </div>
+    
+    <div class="form-group col-md-3">
+      <div *ngFor="let articulo of filtro" class="form-control">
+        <p>{{ nombre }}</p>
       </div>
     </div>
     

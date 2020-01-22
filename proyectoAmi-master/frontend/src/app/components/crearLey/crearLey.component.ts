@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { LeyService } from '../../services/ley.service';
 import { Ley } from '../../models/ley';
 
+import { Articulo } from '../../models/articulo';
+
 
 declare var M: any;
 
@@ -16,6 +18,8 @@ declare var M: any;
 export class CrearLeyComponent implements OnInit {
 
   constructor(public leyService: LeyService) { }
+
+  public articuloSeleccionada:Articulo;
 
   ngOnInit() {
     this.getLeyes();
@@ -69,4 +73,7 @@ export class CrearLeyComponent implements OnInit {
       this.leyService.selectedLey = new Ley();
     }
   }
+
+
+
 }

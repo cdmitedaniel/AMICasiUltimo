@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Leer Ley</title>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="../../../../assets/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../../../../assets/login/css/main.css">
+<!--===============================================================================================-->
+    
+  </head>
+  <body>
+    
+  <div>
+    <!-- Main Navigation 
+    ================================================== -->
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand" href="#"><img src="../../../assets/img/logo1.jpg" alt="" width="100px" height="100%"></a> -->
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="" class="scroll" routerLink="/admin/inicio">Inicio</a></li>
+              <li><a href="" class="scroll active" routerLink="/admin/leyes">Leyes</a></li>
+              <li><a href="" class="scroll" routerLink="/admin/acercaDe">Acerca De</a></li>
+              <li><a href="" class="scroll" routerLink="/contactanos">Contactanos</a></li>
+              <li><a href="" class="scroll" routerLink="/admin/login">Iniciar Sesion</a></li>
+
+            </ul>
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+  </nav>
+  <!-- END nav -->
+  <!-- <img src="../../../assets/img/barra.png" alt="" width="100%"> -->
+</div>
+  
+    
+<!-- Page Header
+    ================================================== -->
+    <div id="tf-header">
+      <div class="container"> <!-- container -->
+          <h1>Leer Ley / Proyecto de Leyes</h1>
+      </div><!-- end container -->
+  </div>
+<br><br><br>
+<!-- Formulario Header
+    ================================================== -->
+    <form #leerLeyForm="ngForm">
+      <fieldset disabled>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputNombreProy">Nombre Ley/Proyecto </label>
+         <input class="form-control" id="disabledTextInput" type="text" name="nombre" #name="ngModel" 
+         [(ngModel)]="leyService.selectedLey.nombre">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputDecreto">Código de Decreto</label>
+          <input class="form-control" id="disabledTextInput" type="text" name="cod_decreto" #name="ngModel" 
+          [(ngModel)]="leyService.selectedLey.cod_decreto">
+        </div>   
+  
+        
+        <div class="form-group col-md-3">                  
+          <label for="inputFecha">Fecha de Publicacion</label>
+          <div class="col-10">
+            <input class="form-control" id="disabledTextInput" name="fecha_publicacion"  #name="ngModel"
+            [(ngModel)]="leyService.selectedLey.fecha_publicacion"
+            >
+          </div>
+        </div>
+   
+        </div>
+  
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputDescripcion">Descripción</label>
+        <input  class="form-control" id="disabledTextInput" name="descripcion"  #name="ngModel"
+        [(ngModel)]="leyService.selectedLey.descripcion">
+       </div>
+    </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputNombre">Nombre de la Persona que Propone Ley/Proyecto </label>
+          <input type="text" id="disabledTextInput" name="proponente" class="form-control"
+          [(ngModel)]="leyService.selectedLey.proponente"
+          >  
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputEstado">Estado del Trámite</label>
+          <input type="text" id="disabledTextInput" class="form-control" name="estado"
+          [(ngModel)]="leyService.selectedLey.estado"
+          >  
+        </div>
+        
+        <div class="form-group col-md-4">        
+            <label for="inputZip">Período Legislativo</label>
+            <select id="inputState" class="form-control">
+              <option selected>2009-2013</option>
+              <option>Todos</option>
+              <option>2009-2013</option>
+              <option>2013-2017</option>
+              <option>2017-2021</option>             
+            </select>
+      </div>
+         
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputNombreArt">Nombre del Artículo</label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="Art. 1123">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputDetalleArt">Detalle del Artículo</label>
+          <input type="text" id="disabledTextInput" class="form-control" placeholder="Proyecto de ley Orgánica de protección">
+        </div>
+      </div>
+  
+      <div class="form-group col-md-6">
+        <label for="inputExplicacionArt">Explicación del Artículo</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Proyecto de ley Orgánica de protección">
+      </div> 
+      
+    </fieldset>
+      
+    </form>
+  
+  
+  <!--===============================================================================================-->	
+	<script src="../../../../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="../../../../assets/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="../../../../assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="../../../../assets/login/vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="../../../../assets/login/js/main.js"></script>
+  
+  </body>
+  </html>

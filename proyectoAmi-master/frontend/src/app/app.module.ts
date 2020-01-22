@@ -33,6 +33,8 @@ import { AcercaDeComponent } from './components/acercaDe/acercaDe.component';
 import { VotarComponent } from './components/votar/votar.component';
 import { LeyesComponent } from './components/leyes/leyes.component';
 import { HistorialAsambleistaComponent } from './components/historial-asambleista/historial-asambleista.component';
+import { LeerLeyComponent } from './components/leer-ley/leer-ley.component';
+import { LeyItemComponent } from './components/ley-item/ley-item.component';
 //Pag Fin
 
 @NgModule({
@@ -62,7 +64,9 @@ import { HistorialAsambleistaComponent } from './components/historial-asambleist
      AcercaDeComponent,
      VotarComponent,
      LeyesComponent,
-     HistorialAsambleistaComponent
+     HistorialAsambleistaComponent,
+     LeyItemComponent,
+     LeerLeyComponent
 
   ],
   imports: [
@@ -166,6 +170,15 @@ import { HistorialAsambleistaComponent } from './components/historial-asambleist
         path: 'admin/inicio',
         component:InicioComponent
       },  
+
+      {
+        path: 'admin/leerLey/:id',
+        component:LeerLeyComponent 
+      },
+      {
+        path: 'admin/leyItem',
+        component:LeyItemComponent
+      }
 
     ])    
   ],

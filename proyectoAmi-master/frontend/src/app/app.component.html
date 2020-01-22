@@ -61,12 +61,11 @@
               <li><a href="" class="scroll" routerLink="/admin/leyes">Leyes</a></li>
               <li><a href="" class="scroll" routerLink="/admin/acercaDe">Acerca De</a></li>
               <li><a href="" class="scroll" routerLink="/contactanos">Contactanos</a></li>
- 
 
-              <li class="nav-item"><a *ngIf="userLogueado==undefined"  routerLink="/admin/login" class="nav-link">Iniciar Sesión</a></li>
+               <li class="nav-item"><a *ngIf="userLogueado==undefined"  routerLink="/admin/login" class="nav-link">Iniciar Sesión</a></li>
               <li class="nav-item"><a *ngIf="userLogueado!=undefined" (click)="cerrarsesion()" class="nav-link">Cerrar Sesión</a></li>
-
               <p *ngIf="userLogueado!=undefined">Bienvenida, {{userLogueado.nombre}}</p>
+             
             </ul>
           </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

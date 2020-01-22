@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             this.authService.setUserLoggedIn(data);
-            this.router.navigate(['/ruta']);
+            this.router.navigate(['/inicio']);
             location.reload();
           },
           error =>{
